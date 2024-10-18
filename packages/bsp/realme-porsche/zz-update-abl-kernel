@@ -6,7 +6,7 @@ gzip -c /boot/vmlinuz-*-sm8350-arm64 > /tmp/Image.gz
 cat /tmp/Image.gz /usr/lib/linux-image-*-sm8350-arm64/qcom/sm8350-realme-porsche.dtb > /tmp/Image.gz-dtb
 
 source /boot/armbianEnv.txt
-python3 /usr/bin/mkbootimg.py \
+/usr/bin/mkbootimg.py \
         --kernel /tmp/Image.gz-dtb \
         --ramdisk /boot/initrd.img-*-sm8350-arm64 \
         --base 0x0 \
