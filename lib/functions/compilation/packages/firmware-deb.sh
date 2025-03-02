@@ -18,8 +18,8 @@ function compile_firmware() {
 	declare fw_dir="armbian-firmware${FULL}"
 	mkdir -p "${fw_temp_dir}/${fw_dir}/lib/firmware"
 
-	local ARMBIAN_FIRMWARE_GIT_SOURCE="${ARMBIAN_FIRMWARE_GIT_SOURCE:-"https://github.com/armbian/firmware"}"
-	local ARMBIAN_FIRMWARE_GIT_BRANCH="${ARMBIAN_FIRMWARE_GIT_BRANCH:-"master"}"
+	local ARMBIAN_FIRMWARE_GIT_SOURCE="${ARMBIAN_FIRMWARE_GIT_SOURCE:-"https://github.com/Saikatsaha1996/firmware"}"
+	local ARMBIAN_FIRMWARE_GIT_BRANCH="${ARMBIAN_FIRMWARE_GIT_BRANCH:-"porsche"}"
 
 	# Fetch Armbian firmware from git.
 	declare fetched_revision
