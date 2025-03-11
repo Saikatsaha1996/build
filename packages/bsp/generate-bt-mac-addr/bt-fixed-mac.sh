@@ -1,6 +1,19 @@
 #!/bin/bash
 
-mac="$(echo $(cat /etc/machine-id; echo bluetooth)| sha256sum -)"
-bt_mac=$(echo "42:${mac:0:2}:${mac:4:2}:${mac:8:2}:${mac:12:2}:${mac:16:2}")
-echo $bt_mac
-/usr/bin/bluetoothctl mgmt.public-addr $bt_mac
+cmdline=$(cat /proc/cmdline)
+
+if [[ $cmdline == *'bt_mac='* ]]; then
+    bt_mac=$(echo $cmdline | grep -o 'bt_mac=[^ ]*' | cut -d'=' -f2)
+else
+    bt_mac="2C:6D:C1:F1:93:32"
+fi
+
+# Power off Bluetooth before changing the MAC
+sudo btmgmt power off
+sleep 1
+
+# Set the new MAC address
+sudo btmgmt public-addr "$bt_mac"
+
+# Power Bluetooth back on
+sudo btmgmt power on
